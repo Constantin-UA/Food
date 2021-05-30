@@ -47,22 +47,6 @@ a {
   font-size: 36px;
   font-weight: 400; }
 
-.show {
-  display: block; }
-
-.hide {
-  display: none; }
-
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s; }
-
-@keyframes fade {
-  from {
-    opacity: 0.1; }
-  to {
-    opacity: 1; } }
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -102,7 +86,7 @@ a {
 .sidepanel {
   position: fixed;
   left: 60px;
-  top: 240px;
+  top: 100px;
   height: 400px;
   width: 25px;
   display: flex;
@@ -121,8 +105,8 @@ a {
     height: 165px;
     background-color: #000; }
   .sidepanel__icon {
-    width: 24px;
-    height: 24px; }
+    width: 26px;
+    height: 26px; }
     .sidepanel__icon img {
       width: 100%; }
 
@@ -265,6 +249,33 @@ a {
       width: 100%;
       height: 100%;
       object-fit: cover; }
+
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  margin-right: 15%;
+  margin-left: 15%;
+  list-style: none; }
+
+.dot {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 6px;
+  margin-right: 3px;
+  margin-left: 3px;
+  cursor: pointer;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: 0.5;
+  transition: opacity 0.6s ease; }
 
 .calculating {
   padding: 50px 0; }
@@ -537,3 +548,19 @@ a {
 
 .hide {
   display: none; }
+
+.show {
+  display: block; }
+
+.hide {
+  display: none; }
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s; }
+
+@keyframes fade {
+  from {
+    opacity: 0.1; }
+  to {
+    opacity: 1; } }
