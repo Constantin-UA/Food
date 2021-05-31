@@ -1,5 +1,5 @@
 function forms() {
-	const modals = require('/modal');
+	const modals = require('./modals');
 	const forms = document.querySelectorAll('form');
 
 	const message = {

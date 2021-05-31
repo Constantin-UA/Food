@@ -17,12 +17,12 @@ gulp.task('copy-html', () => {
 
 gulp.task('build-js', () => {
 	return gulp
-		.src('./src/js/script.js')
+		.src('./src/js/bundle.js')
 		.pipe(
 			webpack({
 				mode: 'development',
 				output: {
-					filename: 'script.js',
+					filename: 'bundle.js',
 				},
 				watch: false,
 				devtool: 'source-map',
@@ -97,12 +97,12 @@ gulp.task('prod', () => {
 	gulp.src('./src/icons/**/*.*').pipe(gulp.dest(dist + '/icons'));
 
 	gulp
-		.src('./src/js/main.js')
+		.src('./src/js/bundle.js')
 		.pipe(
 			webpack({
 				mode: 'production',
 				output: {
-					filename: 'script.js',
+					filename: 'bundle.js',
 				},
 				module: {
 					rules: [
