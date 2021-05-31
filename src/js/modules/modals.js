@@ -1,39 +1,50 @@
-function modals() {
-	const modal = document.querySelector('.modal'),
-		modalTrigger = document.querySelectorAll('[data-modal]');
+function openModal(modalSelector, modalTimerId) {
+	const modal = document.querySelector(modalSelector);
+	modal.classList.add('show');
+	modal.classList.remove('hide');
+	document.body.style.overflow = 'hidden';
+
+	console.log(modalTimerId);
+	if (modalTimerId) {
+		clearInterval(modalTimerId);
+	}
+}
+
+function closeModal(modalSelector) {
+	const modal = document.querySelector(modalSelector);
+	modal.classList.add('hide');
+	modal.classList.remove('show');
+	document.body.style.overflow = '';
+}
+
+function modals(triggerSelector, modalSelector, modalTimerId) {
+	const modal = document.querySelector(modalSelector),
+		modalTrigger = document.querySelectorAll(triggerSelector);
 
 	modalTrigger.forEach((btn) => {
 		btn.addEventListener('click', () => {
-			openCloseModal();
+			openModal(modalSelector, modalTimerId);
 		});
 	});
 
 	modal.addEventListener('click', (e) => {
 		if (e.target === modal || e.target.getAttribute('data-close') == '') {
-			openCloseModal('hide', 'show', '');
+			closeModal(modalSelector);
 		}
 	});
-
-	function openCloseModal(add = 'show', remove = 'hide', overflow = 'hidden') {
-		modal.classList.add(add);
-		modal.classList.remove(remove);
-		document.body.style.overflow = overflow;
-		clearInterval(modalTimerId);
-	}
 
 	document.addEventListener('keydown', (e) => {
 		if (e.code === 'Escape' && modal.classList.contains('show')) {
-			openCloseModal('hide', 'show', '');
+			closeModal(modalSelector);
 		}
 	});
-	const modalTimerId = setTimeout(openCloseModal, 50000);
 
 	function showModalByScroll() {
 		if (
 			window.pageYOffset + document.documentElement.clientHeight >=
 			document.documentElement.scrollHeight
 		) {
-			openCloseModal();
+			openModal(modalSelector, modalTimerId);
 			window.removeEventListener('scroll', showModalByScroll);
 		}
 	}
@@ -41,4 +52,6 @@ function modals() {
 	window.addEventListener('scroll', showModalByScroll);
 }
 
-module.exports = modals;
+export default modals;
+export { openModal };
+export { closeModal };
